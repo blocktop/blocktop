@@ -52,25 +52,38 @@ Blockchain metrics and a unique consensus visualization tool are included in a d
 
 Lucky is the demonstration blockchain for blocktop. It uses the Proof-of-Luck consensus algorithm and the IPFS storage module.
 
+Install gx.
+```
+go get -u github.com/whyrusleeping/gx
+go get -u github.com/whyrusleeping/gx-go
+```
+
+Install IPFS with gx.
+```
+gx-go get github.com/ipfs/go-ipfs
+```
+
 Clone the [go-lucky](https://github.com/blocktop/go-lucky) repo.
 ```
-git clone https://github.com/blocktop/go-lucky.git
+git clone https://github.com/blocktop/go-lucky.git $GOPATH/src/github.com/blocktop/go-lucky
+cd $GOPATH/src/github.com/blocktop/go-lucky
 ```
 
-Get [glide](https://glide.sh/).
+Install dependencies.
 ```
-curl https://glide.sh/get | sh
+gx install
+go get ./...
 ```
 
-Get dependencies.
+Build.
 ```
-cd go-lucky
-glide install
+go build -a -o $GOPATH/bin/lucky
 ```
 
 Init and run your node. Your node will be connected into the Lucky testnet with several other nodes running around the world (some of which are operated by [blocktop.solutions](http://blocktop.solutions), our commercial arm).
 ```
-lucky init && lucky blockchain
+lucky init
+lucky blockchain
 ```
 
 Visualize. Run the following and then open a browser to [http://localhost:3000](http://localhost:3000).
